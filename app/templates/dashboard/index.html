@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Heaven Capture The Flag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capture The Flag">
+    <meta name="author" content="Gilmar Silva">
+    <link href="{{ url_for('static',
+     filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+             data-toggle="collapse" data-target="#navbar"
+             aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">HCTF</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Challenges</a></li>
+              <li><a href="#">ScoreBoard</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">{{ current_user.username }}</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Welcome to the HCTF! :)</h1>
+        <p class="lead">Uma plataforma de jeopard CTF feita com tanta
+           raiva, passei horas debbugando, noites madrugando fazendo tópicos
+           no stack over flow, mas tá legalzinha, enjoy :)</p>
+      </div>
+
+      <div class="jumbotron">
+        <label>CHALLENGES: </label>
+        <p>
+          <button type="button" class="btn btn-success btn-lg">50</button>
+          <button type="button" class="btn btn-success btn-lg">30</button>
+
+          <button type="button" class="btn btn-warning btn-lg">50</button>
+          <button type="button" class="btn btn-warning btn-lg">30</button>
+
+          <button type="button" class="btn btn-danger btn-lg">50</button>
+          <button type="button" class="btn btn-danger btn-lg">30</button>
+        </p>
+      </div>
+
+      <div class="jumbotron">
+        <form class="form-inline" method="POST">
+          <div class="form-group">
+            <label for="send_flag">FLAG:</label>
+            <input class="form-control" id="send_flag" type="text"
+            placeholder="{% if chall_done %}{{ lang.chall.success }}{%
+            else %}{{ lang.chall.placeholder }}{% endif %}">
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+
+      <div class="jumbotron">
+        <table class="table table-bordered">
+          <tr>
+            {% if current_user.is_authenticated %}
+            <th class="active">#1</th>
+            <th class="info">{{ current_user.username }}</th>
+            <th class="danger">{{ current_user.score }}</th>
+            {% endif %}
+          </tr>
+        </table>
+      </div>
+    </div> <!-- /container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.m
+    in.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')
+    }}"></script>
+    <script src="{{ url_for('static', filename='js/submit.js')
+    }}"></script>
+  </body>
+</html>
