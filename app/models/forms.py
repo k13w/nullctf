@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
 from wtforms.validators import DataRequired, Length
 
 class RegisterForm(FlaskForm):
@@ -13,5 +13,5 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('remember_me')
 
 class FlagForm(FlaskForm):
-    flag = StringField('The Flag', validators=[DataRequired(), Length(1, 64)])
-    submit = SubmitField('Send')
+    flag = StringField('flag', validators=[DataRequired(), Length(1, 64)])
+    submit = SubmitField('submit')

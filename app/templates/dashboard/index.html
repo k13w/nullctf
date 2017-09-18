@@ -30,7 +30,6 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Challenges</a></li>
               <li><a href="#">ScoreBoard</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -51,24 +50,41 @@
       <div class="jumbotron">
         <label>CHALLENGES: </label>
         <p>
-          <button type="button" class="btn btn-success btn-lg">50</button>
-          <button type="button" class="btn btn-success btn-lg">30</button>
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#web50">50</button>
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">30</button>
 
-          <button type="button" class="btn btn-warning btn-lg">50</button>
-          <button type="button" class="btn btn-warning btn-lg">30</button>
+          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">50</button>
+          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">30</button>
 
-          <button type="button" class="btn btn-danger btn-lg">50</button>
-          <button type="button" class="btn btn-danger btn-lg">30</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">50</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">30</button>
         </p>
       </div>
 
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <div class="alert alert-success">
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        {% endwith %}
+
       <div class="jumbotron">
-        <form class="form-inline" method="POST">
+        <form class="form-inline" method="POST" action="">
+          {{ form.csrf_token }}
           <div class="form-group">
             <label for="send_flag">FLAG:</label>
-            <input class="form-control" id="send_flag" type="text"
-            placeholder="{% if chall_done %}{{ lang.chall.success }}{%
-            else %}{{ lang.chall.placeholder }}{% endif %}">
+            {{ form.flag(class="form-control",
+            placeholder="Flag HERE!") }}
+            {% if form.errors.flag %}
+            <div class="alert alert-danger" role="alert">
+              {{ form.errors.flag }}
+            </div>
+            {% endif %}
           </div>
           <button type="submit" class="btn btn-primary">Send</button>
         </form>
@@ -87,11 +103,43 @@
       </div>
     </div> <!-- /container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.m
-    in.js"></script>
+    <!-- Modal -->
+    <div class="modal fade" id="web50" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Web 50</h4>
+          </div>
+          <div class="modal-body">
+            <p>Uma de nossas máquinas está com problemas, invada ela, owne ela e descubra a flag<br>web.127.0.0.1/machine</p>
+            <form class="form-inline" method="POST" action="">
+              {{ form.csrf_token }}
+              <div class="form-group">
+                <label for="send_flag">FLAG:</label>
+                {{ form.flag(class="form-control",
+                placeholder="Flag HERE!") }}
+                {% if form.errors.flag %}
+                <div class="alert alert-danger" role="alert">
+                  {{ form.errors.flag }}
+                </div><br><br>
+                {% endif %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </DIV>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js')
     }}"></script>
     <script src="{{ url_for('static', filename='js/submit.js')
+    }}"></script>
+    <script src="{{ url_for('static', filename='js/modal.js')
     }}"></script>
   </body>
 </html>
