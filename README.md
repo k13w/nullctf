@@ -6,7 +6,7 @@
 
 ```
 git clone https://github.com/HeavenH/flask.git
-cd flask-master
+cd flask
 pip install virtualenv
 pip install -r requirements.txt
 virtualenv venv
@@ -16,7 +16,7 @@ python3 manage.py runserver
 ### Windows:
 ```
 git clone https://github.com/HeavenH/flask.git
-cd flask-master
+cd flask
 pip install virtualenv
 pip install -r requirements.txt
 virtualenv venv
