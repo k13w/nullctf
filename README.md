@@ -20,5 +20,5 @@ pip install -r requirements.txt
 virtualenv venv
 cd venv/scripts
 activate
-python3 manage.py runserver
+manage.py runserver
 ```
