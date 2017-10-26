@@ -9,6 +9,7 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)
     score = db.Column(db.String(20))
     solved = db.Column(db.String(400))
+    lastSubmit = db.Column(db.DateTime)
 
     @property
     def is_authenticated(self):

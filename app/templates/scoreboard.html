@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td><strong>#</strong> </td>
+      <td><strong>Name </strong></td>
+      <td><strong>Score</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    {% if users %}
+    {% for user in users %}
+    <tr>
+      <td>{{ rank(user.username) }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.score }}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
