@@ -30,3 +30,6 @@ $ python manage.py db migrate
 $ python manage.py db upgrade
 $ python manage.py runserver
 ```
+
+### Add challenge:
+$ INSERT INTO challenges(name, category, content, flag, score) VALUES ("chall_name", "chall_category", "this is my description of challenge", "HCTF{this_is_a_flag}, 300");
