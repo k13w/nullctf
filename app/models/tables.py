@@ -7,7 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(50))
     email = db.Column(db.String, unique=True)
-    score = db.Column(db.String(20))
+    score = db.Column(db.Integer, default=0)
     solved = db.Column(db.String(400))
     lastSubmit = db.Column(db.DateTime)
 
@@ -26,11 +26,10 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, username, password, email, score, solved):
+    def __init__(self, username, password, email, solved):
         self.username = username
         self.password = password
         self.email = email
-        self.score = score
         self.solved = solved
 
     def __repr__(self):

@@ -1,63 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <title>Heaven Capture The Flag</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Capture The Flag">
-    <meta name="author" content="Gilmar Silva">
-    <link href="{{ url_for('static',
-     filename='css/bootstrap.min.css') }}" rel="stylesheet">
-  </head>
+{% extends 'base.html' %}
 
-  <body>
-    <div class="container">
-
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-             data-toggle="collapse" data-target="#navbar"
-             aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">HCTF</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">ScoreBoard</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">{{ current_user.username }}</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Welcome to the HCTF! :)</h1>
-        <p class="lead">Uma plataforma de jeopard CTF feita com tanta
-           raiva, passei horas debbugando, noites madrugando fazendo tópicos
-           no stack over flow, mas tá legalzinha, enjoy :)</p>
-      </div>
-
+{% block content %}
       <div class="jumbotron">
         <label>CHALLENGES: </label>
         <p>
-          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#web50">50</button>
-          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">30</button>
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#web150">150</button>
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#web300">300</button>
 
-          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">50</button>
-          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">30</button>
+          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">100</button>
+          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">300</button>
 
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">50</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">30</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">200</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">300</button>
         </p>
       </div>
 
@@ -91,7 +45,7 @@
       </div>
 
       <div class="jumbotron">
-        <table class="table table-bordered">
+        <table class="table table-striped ">
           <tr>
             {% if current_user.is_authenticated %}
             <th class="active">#1</th>
@@ -104,26 +58,15 @@
     </div> <!-- /container -->
 
     <!-- Modal -->
-    <div class="modal fade" id="web50" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="web150" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Web 50</h4>
+            <h4 class="modal-title" id="myModalLabel">Web ssl</h4>
           </div>
           <div class="modal-body">
             <p>Uma de nossas máquinas está com problemas, invada ela, owne ela e descubra a flag<br>web.127.0.0.1/machine</p>
-            <form class="form-inline" method="POST" action="">
-              {{ form.csrf_token }}
-              <div class="form-group">
-                <label for="send_flag">FLAG:</label>
-                {{ form.flag(class="form-control",
-                placeholder="Flag HERE!") }}
-                {% if form.errors.flag %}
-                <div class="alert alert-danger" role="alert">
-                  {{ form.errors.flag }}
-                </div><br><br>
-                {% endif %}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -132,14 +75,27 @@
         </div>
       </div>
     </div>
-  </DIV>
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js')
-    }}"></script>
-    <script src="{{ url_for('static', filename='js/submit.js')
-    }}"></script>
-    <script src="{{ url_for('static', filename='js/modal.js')
-    }}"></script>
+  <div class="modal fade" id="web300" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">heap flow</h4>
+        </div>
+        <div class="modal-body">
+          <p>O tempo está batendo na sua porta, soul inventou um binário para reverter o tempo, você pode dizer a ele como reverter esse binário e achar a flag?<br></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   </body>
 </html>
+{% endblock %}

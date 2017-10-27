@@ -2,49 +2,68 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Heaven Labs</title>
-
-    <!-- Bootstrap core CSS -->
+    <title>Heaven Capture The Flag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capture The Flag">
+    <meta name="author" content="Gilmar Silva">
     <link href="{{ url_for('static',
      filename='css/bootstrap.min.css') }}" rel="stylesheet">
-
   </head>
 
   <body>
-
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="/">Home</a></li>
-            <li role="presentation"><a href="/dashboard">Dashboard</a></li>
-            <li role="presentation"><a href="/register">Register</a></li>
-            <li role="presentation"><a href="/login">Login</a></li>
-            <li role="presentation"><a href="/scoreboard">Scoreboard</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Heaven Capture The Flag</h3>
-      </div>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+             data-toggle="collapse" data-target="#navbar"
+             aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class=""><a href="dashboard">Dashboard</a></li>
+              <li class=""><a href="login">Login</a></li>
+              <li class=""><a href="register">Register</a></li>
+              <li><a href="scoreboard">ScoreBoard</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li lass="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ current_user.username }}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile">Profile</a></li>
+                <li><a href="logout">Logout</a></li>
+              </ul>
+            </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
 
       {% block content %}
       {% endblock %}
 
       <footer class="footer" style="clear:both;">
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>&copy; 2017 all rights reserved Gilmar Silva.</p>
       </footer>
 
     </div> <!-- /container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.m
-    in.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js')
+    }}"></script>
+    <script src="{{ url_for('static', filename='js/submit.js')
+    }}"></script>
+    <script src="{{ url_for('static', filename='js/modal.js')
+    }}"></script>
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaroundjs')
+    }}"></script>
+    <script src="{{ url_for('static', filename='js/holder.min.js')
     }}"></script>
   </body>
 </html>

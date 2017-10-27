@@ -27,7 +27,6 @@ def register():
         user = User(email=form.email.data,
                     password=form.password.data,
 		            username=form.username.data,
-                    score='0',
                     solved='')
         db.session.add(user)
         db.session.commit()
@@ -49,6 +48,7 @@ def login():
                            form=form)
 
 @app.route("/dashboard", methods=["GET", "POST"])
+@login_required
 def dashboard():
     if not current_user.is_authenticated:
         # if user is logged in we get out of here
@@ -57,15 +57,18 @@ def dashboard():
     if form.validate_on_submit():
         chall = Challenges.query.filter_by(flag=form.flag.data).first()
         if not chall:
-            flash('wrong Flag!')
+            flash('chegou nem perto!')
             return redirect(url_for('dashboard'))
         if chall.flag == form.flag.data:
             user = User.query.filter_by(username=current_user.username).first()
-            user.score = str(int(user.score) + int(chall.score))
+            if not str(chall.id) in user.solved:
+                user.score = str(int(user.score) + int(chall.score))
+            flash('já respondeu, só bypassando')
+            return render_template('dashboard/index.html', form=form)
             user.solved = user.solved + ', ' + str(chall.id)
             user.lastSubmit = datetime.datetime.utcnow()
             db.session.commit()
-            flash('Good Job Valid Flag')
+            flash('Acertou, mizeravi')
             return redirect(url_for('dashboard'))
     return render_template('dashboard/index.html', form=form)
 
@@ -73,20 +76,20 @@ def dashboard():
 @app.route('/scoreboard')
 @login_required
 def scoreboard():
-    users = User.query.filter(User.username!='admin').order_by(desc(User.score)).all()
+    users = User.query.filter(User.username!='').order_by(desc(User.score)).all()
     winners = []
     temps = []
     for user in users :
+        print(temps)
         if rank(user.username) == 1 :
             winners.append(user)
             temps.append(user.lastSubmit)
-    winnertime = min(temps)
-    return render_template('scoreboard.html', users=users, winnertime=winnertime)
+    return render_template('scoreboard.html', users=users)
 
 @app.context_processor
 def utility_processor():
     def rank(user_name):
-        users = User.query.order_by(asc(User.score)).all()
+        users = User.query.order_by(desc(User.score)).all()
         myuser = User.query.filter_by(username=user_name).first()
         l = []
         for user in users :
@@ -101,6 +104,12 @@ def rank(user_name):
     for user in users :
         l.append(user.score)
     return int(l.index(myuser.score)) + 1
+
+@app.route('/profile')
+@login_required
+def profile():
+    users = User.query.filter(User.username!='').order_by(desc(User.score)).all()
+    return render_template('dashboard/profile.html', users=users)
 
 @app.route("/logout")
 def logout():

@@ -1,16 +1,21 @@
-<table class="table">
+{% extends 'base.html' %}
+
+{% block content %}
+<link href="{{ url_for('static',
+ filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<table class="table table-striped">
   <thead>
     <tr>
-      <td><strong>#</strong> </td>
-      <td><strong>Name </strong></td>
-      <td><strong>Score</strong></td>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
     {% if users %}
     {% for user in users %}
     <tr>
-      <td>{{ rank(user.username) }}</td>
+      <th scope="row">{{ rank(user.username) }}</th>
       <td>{{ user.username }}</td>
       <td>{{ user.score }}</td>
     </tr>
@@ -18,3 +23,4 @@
     {% endif %}
   </tbody>
 </table>
+{% endblock %}
