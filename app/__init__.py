@@ -16,5 +16,5 @@ manager.add_command('db', MigrateCommand)
 lm = LoginManager()
 lm.init_app(app)
 
-from app.controllers import default
+from app.controllers import main
 from app.models import tables, forms
