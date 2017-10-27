@@ -11,6 +11,9 @@ $ pip install virtualenv
 $ virtualenv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
+$ python manage.py db init
+$ python manage.py db migrate
+$ python manage.py upgrade
 $ python manage.py runserver
 ```
 ### Windows:
@@ -22,5 +25,8 @@ $ virtualenv venv
 $ cd venv/scripts
 $ activate
 $ pip install -r requirements.txt
-$ manage.py runserver
+$ python manage.py db init
+$ python manage.py db migrate
+$ python manage.py upgrade
+$ python manage.py runserver
 ```
