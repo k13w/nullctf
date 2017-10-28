@@ -1,6 +1,6 @@
 # flask
 
-## Usage
+## Installation
 
 ### Linux:
 
@@ -29,6 +29,14 @@ $ python manage.py db init
 $ python manage.py db migrate
 $ python manage.py db upgrade
 $ python manage.py runserver
+```
+
+Usage:
+
+### Setup API key
+```
+$ export RECAPTCHA_PRIVATE_KEY='<your recaptcha private key>'
+$ export RECAPTCHA_PUBLIC_KEY='< your recaptcha public key>'
 ```
 
 ### Add challenge:
