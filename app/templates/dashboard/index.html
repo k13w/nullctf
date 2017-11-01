@@ -4,11 +4,11 @@
       <div class="jumbotron">
         <label>CHALLENGES: </label>
         <p>
-          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#web150">150</button>
-          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#web300">300</button>
+          <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">150</button></span>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">300</button>
 
-          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">100</button>
-          <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">300</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">100</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">300</button>
 
           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">200</button>
           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">300</button>
@@ -40,21 +40,10 @@
             </div>
             {% endif %}
           </div>
-          <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" id="flag-submission" class="btn btn-danger">Submit</button>
         </form>
       </div>
 
-      <div class="jumbotron">
-        <table class="table table-striped ">
-          <tr>
-            {% if current_user.is_authenticated %}
-            <th class="active">#1</th>
-            <th class="info">{{ current_user.username }}</th>
-            <th class="danger">{{ current_user.score }}</th>
-            {% endif %}
-          </tr>
-        </table>
-      </div>
     </div> <!-- /container -->
 
     <!-- Modal -->
@@ -70,7 +59,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <span class="flag-submission"><button type="submit" class="btn btn-danger">Send</button></span>
           </div>
         </div>
       </div>
@@ -89,7 +78,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Send</button>
+          <button type="submit" class="btn btn-danger">Send</button>
         </div>
       </div>
     </div>
