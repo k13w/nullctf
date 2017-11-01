@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-
 from flask import render_template, flash, redirect, url_for, session
-from flask_login import login_user, logout_user, current_user, login_required
+from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 from app import app, db, lm
 from sqlalchemy import desc, asc
 
 from app.models.tables import User, Challenges
 from app.models.forms import LoginForm, RegisterForm, FlagForm
 import datetime
+from notifications import *
 
 @lm.user_loader
 def load_user(id):
@@ -53,6 +51,7 @@ def login():
 @app.route("/dashboard", methods=["GET", "POST"])
 @login_required
 def dashboard():
+    users = User.query.filter_by(username=current_user.username).first()
     if not current_user.is_authenticated:
         # if user is logged in we get out of here
         return redirect(url_for('login'))
@@ -64,16 +63,16 @@ def dashboard():
             return redirect(url_for('dashboard'))
         if chall.flag == form.flag.data:
             user = User.query.filter_by(username=current_user.username).first()
-            if not str(chall.id) in user.solved:
-                user.score = str(int(user.score) + int(chall.score))
-            flash('já respondeu, só bypassando')
-            return render_template('dashboard/index.html', form=form)
+            if str(chall.id) in user.solved:
+                flash('já respondeu, só bypassando')
+                return render_template('dashboard/index.html', form=form)
+            user.score = str(int(user.score) + int(chall.score))
             user.solved = user.solved + ', ' + str(chall.id)
             user.lastSubmit = datetime.datetime.utcnow()
             db.session.commit()
             flash('Acertou, mizeravi')
             return redirect(url_for('dashboard'))
-    return render_template('dashboard/index.html', form=form)
+    return render_template('dashboard/index.html', form=form, users=users)
 
 
 @app.route('/scoreboard')
