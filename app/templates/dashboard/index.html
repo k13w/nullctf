@@ -2,8 +2,11 @@
 
 {% block content %}
       <div id="jumb" class="jumbotron">
-        <label>CHALLENGES: </label>
-        <p>
+        <label>CHALLENGES: </label><br>
+        {% for chal in chall%}
+          <button type="button" id="aligner" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#{{ chal.id }}">{{ chal.name }}</button>
+        {% endfor %}
+       <!-- <p>
           <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">Heap Flow</button></span>
           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">Web SSL</button>
           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Over in Over</button>
@@ -15,6 +18,7 @@
           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Bit per Bit</button>
           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">House of token</button>
         </p>
+        -->
       </div>
 
       {% with messages = get_flashed_messages() %}
@@ -37,28 +41,28 @@
             <label for="send_flag">FLAG:</label>
             {{ form.flag(class="form-control",
             placeholder="Flag HERE!") }}
-            {% if form.errors.flag %}
+            {% for error in errors %}
             <div class="alert alert-danger" role="alert">
-              {{ form.errors.flag }}
+              {{ error }}
             </div>
-            {% endif %}
+              {% endfor %}
           </div>
         <button type="submit" id="flag-submission" class="btn btn-danger">Submit</button>
         </form>
       </div>
 
     </div> <!-- /container -->
-
+    {% for chal in chall%}
     <!-- Modal -->
-    <div class="modal fade" id="web150" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="{{ chal.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Web ssl</h4>
+            <h4 class="modal-title" id="myModalLabel">{{ chal.name }}</h4>
           </div>
           <div class="modal-body">
-            <p>Uma de nossas máquinas está com problemas, invada ela, owne ela e descubra a flag<br>web.127.0.0.1/machine</p>
+            <p>{{ chal.content }}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -68,24 +72,8 @@
       </div>
     </div>
   </div>
+  {% endfor %}
 
-  <div class="modal fade" id="web300" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">heap flow</h4>
-        </div>
-        <div class="modal-body">
-          <p>O tempo está batendo na sua porta, soul inventou um binário para reverter o tempo, você pode dizer a ele como reverter esse binário e achar a flag?<br></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-danger">Send</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
   </body>

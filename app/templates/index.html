@@ -4,6 +4,9 @@
       <div class="jumbotron">
         <h1>Mal vindos</h1>
         <p class="lead">200 tópicos no stack overflow pra fazer essa merda, é isso, pelo menos não é em java</p>
+        {% if current_user.is_authenticated %}
+        {% else %}
         <p><a class="btn btn-lg btn-danger" href="register" role="button">Sign Up</a></p>
+        {% endif %}
       </div>
 {% endblock %}

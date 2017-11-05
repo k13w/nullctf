@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
 from app import app
 from app.models.tables import User
 from flask import render_template, redirect, url_for
