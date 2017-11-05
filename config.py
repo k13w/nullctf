@@ -8,5 +8,5 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
 'storage.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-SECRET_KEY = ''
-SECURITY_PASSWORD_SALT = ''
+SECRET_KEY = 'h34v3n'
+SECURITY_PASSWORD_SALT = '000'

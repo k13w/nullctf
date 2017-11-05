@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-      <div class="jumbotron">
+      <div id="jumb" class="jumbotron">
         <label>CHALLENGES: </label>
         <p>
-          <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">150</button></span>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">300</button>
-
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">100</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">300</button>
-
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">200</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">300</button>
+          <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">Heap Flow</button></span>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">Web SSL</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Over in Over</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Stack or Heap</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">binary of course</button>
+          <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">Regex so easy</button></span>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">Keygen security</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Mult Holder</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Bit per Bit</button>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">House of token</button>
         </p>
       </div>
 
       {% with messages = get_flashed_messages() %}
           {% if messages %}
-          <div class="alert alert-success">
+          <div class="alert alert-success alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             <ul class=flashes>
             {% for message in messages %}
               <li>{{ message }}</li>
