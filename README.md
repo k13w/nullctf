@@ -8,13 +8,13 @@
 $ git clone https://github.com/HeavenH/flask.git
 $ cd flask
 $ pip install virtualenv
-$ virtualenv venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
+$ virtualenv env
+$ source env/bin/activate
+$ ./prepare.sh
 $ python manage.py db init
 $ python manage.py db migrate
 $ python manage.py db upgrade
-$ python manage.py runserver
+$ ./gunicorn_start.sh
 ```
 ### Windows:
 ```
