@@ -30,7 +30,11 @@ def dashboard():
     if form.validate_on_submit():
         chall1 = Challenges.query.filter_by(flag=form.flag.data).first()
         if not chall1:
+<<<<<<< HEAD
             flash(FLAG_INCORRECT)
+=======
+            flash(FLAG_INCORRET)
+>>>>>>> 1cd61961236e1276789d3ec97bbc5a40004a6ef3
             return redirect(url_for('dashboard'))
         if chall1.flag == form.flag.data:
             user = User.query.filter_by(username=current_user.username).first()
