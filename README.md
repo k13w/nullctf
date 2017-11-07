@@ -5,13 +5,11 @@
 ### Linux:
 
 ```
-$ git clone https://github.com/HeavenH/flask.git
-$ cd flask
-$ pip install virtualenv
-$ virtualenv env
-$ source env/bin/activate
-$ ./prepare.sh
-$ ./gunicorn_start.sh
+1: $ pip install virtualenv - install the virtualenv
+2: $ virtualenv env - create a new virtual enviroment
+3: $ source env/bin/activate - activate the virtual environment
+4: $ ./prepare.sh - to install dependencies using apt.
+5: $ ./gunicorn_start.sh - in a terminal to drop into debug mode.
 ```
 ### Windows:
 ```
