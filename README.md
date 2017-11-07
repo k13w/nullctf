@@ -10,11 +10,11 @@ HCTF is a Capture The Flag jeopardy style CTF. Developed in flask, so simple to 
 ### Linux:
 
 ```
-$ pip install virtualenv - install the virtualenv
-$ virtualenv env - create a new virtual enviroment
-$ source env/bin/activate - activate the virtual environment
-$ ./prepare.sh - to install dependencies using apt.
-$ ./gunicorn_start.sh - run app in a terminal to drop into debug mode.
+$ pip install virtualenv
+$ virtualenv env
+$ source env/bin/activate
+$ ./prepare.sh
+$ ./gunicorn_start.sh
 ```
 ### Windows:
 ```
