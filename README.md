@@ -18,11 +18,9 @@ $ ./gunicorn_start.sh
 ```
 ### Windows:
 ```
-$ git clone https://github.com/HeavenH/flask.git
-$ cd flask
 $ pip install virtualenv
-$ virtualenv venv
-$ cd venv/scripts
+$ virtualenv env
+$ cd env/scripts
 $ activate
 $ pip install -r requirements.txt
 $ python manage.py db init
