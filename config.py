@@ -6,8 +6,6 @@ ctf_name = "HCTF"
 DEBUG = True
 TESTING = True
 SESSION_COOKIE_NAME = 'gilmazin_cookie'
-SERVER_NAME = '127.0.0.1:5000'
-JSON_AS_ASCII = False
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
 'storage.db')
