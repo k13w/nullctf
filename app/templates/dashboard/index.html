@@ -59,14 +59,24 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">{{ chal.name }}</h4>
+            <h4 class="modal-title" id="myModalLabel">{{ chal.name }} - {{ chal.value}}</h4>
           </div>
           <div class="modal-body">
             <p>{{ chal.content }}</p>
-          </div>
           <div class="modal-footer">
+            <form class="form-inline" method="POST" action="">
+              {{ form.csrf_token }}
+              <div class="form-group">
+                {{ form.flag(class="form-control", id="inputflag",
+                placeholder="Flag HERE!") }}
+                {% for error in errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+                  {% endfor %}
+              </div>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <span class="flag-submission"><button type="submit" class="btn btn-danger">Send</button></span>
+            <span class="flag-submission"><button type="submit" id="flag-submission" class="btn btn-danger">Send</button></span>
           </div>
         </div>
       </div>

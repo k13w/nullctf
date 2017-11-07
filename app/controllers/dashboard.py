@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-
 from flask import render_template, flash, redirect, url_for, session
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm
@@ -33,7 +30,7 @@ def dashboard():
     if form.validate_on_submit():
         chall1 = Challenges.query.filter_by(flag=form.flag.data).first()
         if not chall1:
-            flash(FLAG_SUCCESS)
+            flash(FLAG_INCORRECT)
             return redirect(url_for('dashboard'))
         if chall1.flag == form.flag.data:
             user = User.query.filter_by(username=current_user.username).first()
@@ -41,7 +38,7 @@ def dashboard():
                 flash(FLAG_SUBMITTED_ALREADY)
                 print(chall)
                 return render_template('dashboard/index.html', form=form, users=users, chall=chall)
-            user.score = str(int(user.score) + int(chall1.score))
+            user.score = str(int(user.score) + int(chall1.value))
             user.solved = user.solved + str(chall1.id) + ', '
             user.lastSubmit = datetime.datetime.utcnow()
             db.session.commit()

@@ -40,9 +40,16 @@ class Challenges(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
     category = db.Column(db.String(80))
-    content = db.Column(db.String(800))
+    content = db.Column(db.Text)
     flag = db.Column(db.String(40))
-    score = db.Column(db.String(20))
+    value = db.Column(db.String(20))
+
+    def __init__(self, name, category, content, flag, value):
+        self.name = name
+        self.category = category
+        self.content = content
+        self.flag = flag
+        self.value = value
 
     def __repr__(self):
         return '<Challenges %r>' % self.name
