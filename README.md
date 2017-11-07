@@ -11,9 +11,6 @@ $ pip install virtualenv
 $ virtualenv env
 $ source env/bin/activate
 $ ./prepare.sh
-$ python manage.py db init
-$ python manage.py db migrate
-$ python manage.py db upgrade
 $ ./gunicorn_start.sh
 ```
 ### Windows:
