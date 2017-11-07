@@ -12,7 +12,7 @@ $ pip install virtualenv - install the virtualenv
 $ virtualenv env - create a new virtual enviroment
 $ source env/bin/activate - activate the virtual environment
 $ ./prepare.sh - to install dependencies using apt.
-$ ./gunicorn_start.sh - in a terminal to drop into debug mode.
+$ ./gunicorn_start.sh - run app in a terminal to drop into debug mode.
 ```
 ### Windows:
 ```
