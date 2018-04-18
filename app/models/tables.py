@@ -1,11 +1,13 @@
 from app import db
+from flask_dance.consumer.backend.sqla import OAuthConsumerMixin, SQLAlchemyBackend
+from flask_login import current_user
+from app import blueprint
 
 class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True)
-    password = db.Column(db.String(50))
     email = db.Column(db.String, unique=True)
     score = db.Column(db.Integer, default=0)
     solved = db.Column(db.String(400))
@@ -26,14 +28,19 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, username, password, email, solved):
+    def __init__(self, username, email, solved):
         self.username = username
-        self.password = password
         self.email = email
         self.solved = solved
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+class OAuth(OAuthConsumerMixin, db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    user = db.relationship(User)
+
+blueprint.backend = SQLAlchemyBackend(OAuth, db.session, user=current_user, user_required=False)
 
 class Challenges(db.Model):
     __tablename__ = 'challenges'

@@ -1,13 +1,15 @@
-import os.path
 from app import app
-basedir = os.path.abspath(os.path.dirname(__file__))
+from os import path, environ
+
+basedir = path.abspath(path.dirname(__file__))
 
 ctf_name = "HCTF"
 DEBUG = True
 TESTING = True
 SESSION_COOKIE_NAME = 'gilmazin_cookie'
+environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(basedir,
 'storage.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
