@@ -11,22 +11,23 @@ HCTF is a Capture The Flag jeopardy style CTF. Developed in flask, so simple to 
 
 ```
 $ pip install virtualenv
-$ virtualenv env
+$ virtualenv venv
 $ source env/bin/activate
+$ pip install --upgrade -r requirements.txt
 $ ./prepare.sh
 $ ./gunicorn_start.sh
 ```
 ### Windows:
 ```
 $ pip install virtualenv
-$ virtualenv env
+$ virtualenv venv
 $ cd env/scripts
 $ activate
 $ pip install --upgrade -r requirements.txt
-$ python manage.py db init
-$ python manage.py db migrate
-$ python manage.py db upgrade
-$ python manage.py runserver
+$ manage.py db init
+$ manage.py db migrate
+$ manage.py db upgrade
+$ manage.py runserver
 ```
 
 Usage:
