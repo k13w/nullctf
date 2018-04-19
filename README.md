@@ -1,10 +1,7 @@
 # flask
 [![Python-Versions](https://img.shields.io/badge/python-2.7%2C%203.3%2C%203.4%2C%203.5-blue.svg)](https://www.python.org/)
 [![Version-Program](https://img.shields.io/badge/version-1.1-orange.svg)](https://github.com/HeavenH/flask/releases)
-[![Build-Progam](https://img.shields.io/badge/build-passing-orange.svg)
-## What is HCTF?
-
-HCTF is a Capture The Flag jeopardy style CTF. Developed in flask, so simple to install and play, enjoy :p
+[![build](https://img.shields.io/badge/build-passing-brightgreen.svg)(https://github.com/HeavenH/flask)
 
 ## Features:
 ```
