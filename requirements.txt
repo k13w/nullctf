@@ -6,4 +6,8 @@ Flask-SQLAlchemy
 Flask-WTF
 gunicorn
 blinker
+<<<<<<< HEAD
 Flask-Dance[sqla]
+=======
+Flask-Dance[sqla]
+>>>>>>> 64885a739324ef94c756dd2eb1f40fedf9be2258
