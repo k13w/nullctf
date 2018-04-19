@@ -52,7 +52,7 @@
       </div>
 
     </div> <!-- /container -->
-    {% for chal in chall%}
+    {% for chal in chall %}
     <!-- Modal -->
     <div class="modal fade" id="{{ chal.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -66,15 +66,6 @@
           <div class="modal-footer">
             <form class="form-inline" method="POST" action="">
               {{ form.csrf_token }}
-              <div class="form-group">
-                {{ form.flag(class="form-control", id="inputflag",
-                placeholder="Flag HERE!") }}
-                {% for error in errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
-                </div>
-                  {% endfor %}
-              </div>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <span class="flag-submission"><button type="submit" id="flag-submission" class="btn btn-danger">Send</button></span>
           </div>
