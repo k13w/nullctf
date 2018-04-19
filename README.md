@@ -5,6 +5,10 @@
 ## What is HCTF?
 
 HCTF is a Capture The Flag jeopardy style CTF. Developed in flask, so simple to install and play, enjoy :p
+
+## Features
+18-04-2018 -> add OAuth with providers 
+
 ## Installation
 
 ### Linux:
