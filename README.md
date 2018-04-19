@@ -22,7 +22,7 @@ $ pip install virtualenv
 $ virtualenv env
 $ cd env/scripts
 $ activate
-$ pip install -r requirements.txt
+$ pip install --upgrade -r requirements.txt
 $ python manage.py db init
 $ python manage.py db migrate
 $ python manage.py db upgrade
