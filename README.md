@@ -15,7 +15,7 @@
 ```
 $ pip install virtualenv
 $ virtualenv venv
-$ source env/bin/activate
+$ source venv/bin/activate
 $ pip install --upgrade -r requirements.txt
 $ ./prepare.sh
 $ ./gunicorn_start.sh
