@@ -10,8 +10,6 @@
 
 ## Installation
 
-### Linux:
-
 ```
 $ pip install virtualenv
 $ virtualenv venv
@@ -21,17 +19,11 @@ $ chmod +x db.sh gunicorn_start.sh
 $ ./db.sh
 $ ./gunicorn_start.sh
 ```
-### Windows:
+
+### Oauth Config:
+
 ```
-$ pip install virtualenv
-$ virtualenv venv
-$ cd env/scripts
-$ activate
-$ pip install --upgrade -r requirements.txt
-$ manage.py db init
-$ manage.py db migrate
-$ manage.py db upgrade
-$ manage.py runserver
+Change api.ini with your client_id and client_secret
 ```
 
 Usage:
