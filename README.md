@@ -20,7 +20,7 @@ $ ./db.sh
 $ ./gunicorn_start.sh
 ```
 
-### Oauth Config:
+### OAuth Config:
 
 ```
 Change api.ini with your client_id and client_secret
