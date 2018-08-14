@@ -7,3 +7,4 @@ Flask-WTF
 gunicorn
 blinker
 Flask-Dance[sqla]
+configparser
