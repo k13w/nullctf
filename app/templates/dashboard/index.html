@@ -4,23 +4,14 @@
       <div id="jumb" class="jumbotron">
         <label>CHALLENGES: </label><br>
         {% for chal in chall%}
+          {% if chal.id in current_user.get_chal() %}
+          <button type="button" id="aligner" class="btn btn-success" data-toggle="modal" data-target="#{{ chal.id }}">{{ chal.name }}</button>
+          {% else %}
           <button type="button" id="aligner" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#{{ chal.id }}">{{ chal.name }}</button>
+          {% endif %}
         {% endfor %}
-       <!-- <p>
-          <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">Heap Flow</button></span>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">Web SSL</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Over in Over</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Stack or Heap</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">binary of course</button>
-          <span class="web150"><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web150">Regex so easy</button></span>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#web300">Keygen security</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Mult Holder</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Bit per Bit</button>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">House of token</button>
-        </p>
-        -->
       </div>
-
+      
       {% with messages = get_flashed_messages() %}
           {% if messages %}
           <div class="alert alert-success alert-dismissable" role="alert">
@@ -67,7 +58,6 @@
             <form class="form-inline" method="POST" action="">
               {{ form.csrf_token }}
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <span class="flag-submission"><button type="submit" id="flag-submission" class="btn btn-danger">Send</button></span>
           </div>
         </div>
       </div>
@@ -76,6 +66,7 @@
   {% endfor %}
 
 </div>
+
 
   </body>
 </html>

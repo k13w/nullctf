@@ -36,6 +36,9 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+    def get_chal(self):
+        return list(map(int, self.solved.split(',')[:-1]))
+
 class OAuth(OAuthConsumerMixin, db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(User.id))
     user = db.relationship(User)
