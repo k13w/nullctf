@@ -15,9 +15,9 @@ $ pip install virtualenv
 $ virtualenv venv
 $ source venv/bin/activate
 $ pip install --upgrade -r requirements.txt
-$ chmod +x db.sh gunicorn_start.sh
+$ chmod +x db.sh start.sh
 $ ./db.sh
-$ ./gunicorn_start.sh
+$ ./start.sh
 ```
 
 ### OAuth Config:
